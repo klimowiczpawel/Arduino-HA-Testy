@@ -46,7 +46,6 @@ PubSubClient client(ethClient);
 
 void callback(char* topic, byte* payload, unsigned int length) {
   // handle message arrived
-  //int test = atoi((char *)payload);
   if(strcmp(topic, tematSub_1)==0){
     digitalWrite(pinSterujacy_1, atoi((char *)payload));
     client.publish(temat_1, String(digitalRead(pinSterujacy_1)).c_str(), true);
@@ -55,12 +54,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(pinSterujacy_2, atoi((char *)payload));
     client.publish(temat_2, String(digitalRead(pinSterujacy_2)).c_str(), true);
   }
-  
-  //Serial.print("Payload: ");
-  //Serial.println(String(test).c_str());
 }
-
-//PubSubClient client(server, 1883, callback, ethClient);
 
 long lastReconnectAttempt = 0;
 
